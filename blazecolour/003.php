@@ -1,15 +1,12 @@
-<?php 	
-$arr_months = [
-['January', 'February', 'March', 'April'],
-['May', 'June', 'July', 'August'],
-['September', 'October', 'November', 'December']
-];
+<?php 
+$date_today = mktime(); //текущая дата 
 
-$comma = ', ';
+$date_new_year = mktime(0,0,0,1,1,2017); //дата нового года
 
-foreach ($arr_months as $value) {
-	foreach ($value as $month) {
-		if ($month == $arr_months[2][3]) echo $month;
-		elseif ($month .= $comma ) echo $month;
-	}	
-}
+$days_before = $date_new_year-$date_today; //количество оставшегося времени до нового года
+
+$arr_days_before = getdate($days_before); // выводим количество оставшегося времени до нового года в ассоциативный массив
+
+$amount_days =  $arr_days_before['yday']; // извлекаем из массива количество дней
+
+echo "До нового года осталось $amount_days дней";
