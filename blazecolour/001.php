@@ -1,12 +1,18 @@
-<?php 
-$date_today = mktime(); //текущая дата 
+<?php
+//функция справедлива только для двумерного массива
+function without_symb_end ($arr = [], $symb = '') {
+	foreach ($arr as $value1) {
+		foreach ($value1 as $value2) {
+			if ($value2 == end(end($arr))) echo $value2;
+			elseif ($value2 .= $symb) echo $value2;
+		}	
+	}}
 
-$date_new_year = mktime(0,0,0,1,1,2017); //дата нового года
+$months = [
+['January', 'February', 'March'],
+['April', 'May', 'June'],
+['July', 'August', 'September'],
+['October', 'November', 'December']
+];		
 
-$days_before = $date_new_year-$date_today; //количество оставшегося времени до нового года
-
-$arr_days_before = getdate($days_before); // выводим количество оставшегося времени до нового года в ассоциативный массив
-
-$amount_days =  $arr_days_before['yday']; // извлекаем из массива количество дней
-
-echo "До нового года осталось $amount_days дней";
+without_symb_end($months, ', ');
