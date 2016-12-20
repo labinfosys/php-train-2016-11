@@ -6,12 +6,17 @@ $cities = [
 'Владикавказ', 'Владимир', 'Волгоград', 'Вологда', 'Воронеж',
 ];
 
-$firstLetter = '';
-foreach ($cities as $city) {
-	if (mb_substr($city, 0, 1) != $firstLetter) {
-		$firstLetter = mb_substr($city, 0, 1);
-		$result .= '<dt>' . $firstLetter . '</dt>';
-	}	
-	$result .= '<dd>' . $city . '</dd>';
+function determ ($arr = []) {
+	$firstLetter = '';
+	$result = '';
+	foreach ($arr as $key) {
+		if (mb_substr($key, 0, 1) != $firstLetter) {
+			$firstLetter = mb_substr($key, 0, 1);
+			$result .= '<dt>' . $firstLetter . '</dt>';
+		}	
+		$result .= '<dd>' . $key . '</dd>';
+	}
+	echo '<dl>' . $result . '</dl>';
 }
-echo '<dl>' . $result . '</dl>';
+
+determ($cities);
